@@ -1,0 +1,320 @@
+{
+  "transactions": [
+    { "id": 1, "arn": "24610432650004020160139", "txn_name": "Amazon UK", "txn_description":"LEGO Sports Car", "account": "4752999999999999", "price": 123.59, "currency": "£", "txn_date": "2020-06-16T10:11:07+00:00"},
+	{ "id": 2, "arn": "24610432650004020160139", "txn_name": "scamme.com", "txn_description":"OLED TV", "account": "4752999999999999", "price": 200.63, "currency": "£", "txn_date": "2020-06-18T09:34:07+00:00"},
+	{ "id": 3, "arn": "24610432650004020160139", "txn_name": "Tiffany's", "txn_description":"Jewellery", "account": "4752999999999999", "price": 2304.45, "currency": "$", "txn_date": "2020-06-21T10:18:45+00:00"},
+	{ "id": 4, "arn": "24610432650004020160139", "txn_name": "Apple.com", "txn_description":"Personal Computers", "account": "4752999999999999", "price": 1250.00, "currency": "$", "txn_date": "2020-07-01T12:27:07+00:00"}
+  ],
+  "reasons": [
+	{"display":"Fraud", "id":"Fraud"},
+	{"display":"I haven't received the merchandise/service", "id":"NeverReceived"}
+  ],
+  "questions": [
+    { 
+		"id": "Fraud", 
+		"form": [
+			{
+				"question_text": "Fraud Type", 
+				"property": "FraudTypeApp", 
+				"type": "Select",
+				"default_value": "0",
+				"responses": [
+					{"display": "Lost", "value":"0"},
+					{"display": "Stolen", "value":"1"},
+					{"display": "Card not received as Issued", "value":"2"},
+					{"display": "Fraudulent application (cardholder never applied for the card)", "value":"3"},
+					{"display": "Issuer-reported counterfeit", "value":"4"},
+					{"display": "Miscellaneous", "value":"5"},
+					{"display": "Fraudulent use of account number", "value":"6"},
+					{"display": "Incorrect Processing", "value":"A"},
+					{"display": "Account or Credentials Takeover", "value":"B"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Are you in possession of the card?", 
+				"property": "CardPossessoinFraud", 
+				"type": "Radio",
+				"default_value": "Yes",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Have you given your card or pin to anyone else to use?", 
+				"property": "CardOrPinFraud", 
+				"default_value": "No",
+				"type": "Radio",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Do you recognize any of these Merchants?", 
+				"property": "CanRecognizeMerchant",
+				"default_value": "Yes",
+				"type": "Radio",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Did the cardholder authorize or participate in the transaction?", 
+				"property": "CardholderDidNotAuthorizeOrParticipate",
+				"default_value": "Yes",				
+				"type": "Radio",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Chip card?", 
+				"property": "IsChipCard", 
+				"type": "Radio",
+				"default_value": "Yes",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "PIN preferring chip card?", 
+				"property": "IsPinPreferringCard", 
+				"default_value": "Yes",
+				"type": "Radio",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Do you want to continue as Fraud?", 
+				"property": "IsFraudDispute", 
+				"default_value": "Yes",
+				"type": "Radio",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Comments", 
+				"property": "Comments", 
+				"type": "TextArea",
+				"responses": [
+				],
+				"mandatory": false,
+				"display_condition": "Always",
+				"region": "All"
+			}
+			
+		] 
+	
+	},
+	{
+		"id": "NeverReceived",
+		"form": [
+			{
+				"question_text": "Is the merchant in liquidation or receivership?", 
+				"property": "MerchantInLiquidationOrReceivershipInd", 
+				"type": "Radio",
+				"default_value": "No",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "France"
+			},
+			{
+				"question_text": "What was not received?", 
+				"property": "WhatWasNotReceived", 
+				"default_value": "Merchandise",
+				"type": "Radio",
+				"responses": [
+					{"display": "Merchandise", "value":"Merchandise"},
+					{"display": "Services", "value":"Services"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Does the dispute relate to non-receipt of travel services from a merchant that has failed to provide travel services?", 
+				"property": "NonReceiptOfTravelServicesInd", 
+				"type": "Radio",
+				"default_value": "Yes",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Provide an explanation of the attempt to resolve the dispute with the bonding authority/insurance scheme or where the information was obtained to confirm an insufficient bond/insurance scheme", 
+				"property": "ExplainAttemptToResolveWithBondAuth", 
+				"type": "TextArea",
+				"responses": [
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Date of the letter or advice from the bonding authority/insurance scheme", 
+				"property": "BondAuthLetterOrAdviceDate", 
+				"type": "Date",
+				"responses": [
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Provide detailed description of what was purchased and an explanation of the dispute", 
+				"property": "GoodsServicesCode", 
+				"type": "TextArea",
+				"responses": [
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Did the cardholder cancel prior to the expected date?", 
+				"property": "CancelPriorExpectedDate", 
+				"type": "Radio",
+				"default_value": "No",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Cancellation Date", 
+				"property": "CancelDate", 
+				"type": "Date",
+				"responses": [
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Cancellation Reason", 
+				"property": "CancellationMethod", 
+				"type": "Text",
+				"responses": [
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Was the merchandise delivered late or to the wrong location?", 
+				"property": "MerchandiseLocation", 
+				"default_value": "No",
+				"type": "Radio",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Provide address of the agreed location or details of late delivery", 
+				"property": "AgreedLocation", 
+				"type": "TextArea",
+				"responses": [
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+			{
+				"question_text": "Is the purchase amount of the merchandise/service more than the transaction amount?", 
+				"property": "IsPurchaseAmtSameAsTransAmt", 
+				"default_value": "Yes",
+				"type": "Radio",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+
+				],
+				"mandatory": false,
+				"display_condition": "Always",
+				"region": "UK"
+			},
+			{
+				"question_text": "Purchase Amount", 
+				"property": "PurchaseAmount", 
+				"type": "Text",
+				"responses": [
+					{"display": "Yes", "value":"Yes"},
+					{"display": "No", "value":"No"}
+
+				],
+				"mandatory": true,
+				"display_condition": "Always",
+				"region": "All"
+			},
+
+			{
+				"question_text": "Comments", 
+				"property": "Comments", 
+				"type": "TextArea",
+				"responses": [
+				],
+				"mandatory": false,
+				"display_condition": "Always",
+				"region": "All"
+			}
+			
+		] 
+	}
+	
+  ],
+  "enrichments": [
+	{ "id": 1, "merchant": "Merchant full name", "merchant_logo": "https://picsum.photos/200", "merchant_address": "124 Holland Drive, Somewhere NO1 WAY", "merchant_street_view": "https://i.picsum.photos/id/1059/7360/4912.jpg?hmac=vVWk1qyiXN_VgPhpNqFm3yl2HUPW6fHqYOjTHYO2bHQ"  },
+	{ "id": 2, "merchant": "Merchant 2 name", "merchant_logo": "https://picsum.photos/200", "merchant_address": "123 Holland Drive, Somewhere NO1 WAY"  },
+	{ "id": 3, "merchant": "Merchant 3 name", "merchant_logo": "https://picsum.photos/200", "merchant_address": "123 Holland Drive, Somewhere NO1 WAY"  },
+	{ "id": 4, "merchant": "Merchant 4 name", "merchant_logo": "https://picsum.photos/200", "merchant_address": "123 Holland Drive, Somewhere NO1 WAY"  }
+  ]
+}
